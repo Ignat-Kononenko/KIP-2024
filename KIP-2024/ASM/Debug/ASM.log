@@ -1,0 +1,24 @@
+﻿Сборка начата 18.12.2024 18:28:09.
+Уровень детализации журнала: Normal.     1>Проект "D:\KIP-2024\KIP-2024\ASM\ASM.vcxproj" в узле 2 (целевые объекты Build).
+     1>PrepareForBuild:
+         Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
+       InitializeBuildStatus:
+         Создание "Debug\ASM.tlog\unsuccessfulbuild", так как было задано "AlwaysCreate".
+         Обращение к "Debug\ASM.tlog\unsuccessfulbuild".
+       _MASM:
+         Assembling asm.asm...
+         cmd.exe /C "C:\Users\User\AppData\Local\Temp\tmp3c963dfff9a74a56b7650b3f8e64270d.cmd"
+         ml.exe /c /nologo /Zi /Fo"Debug\asm.obj" /Fl"Debug\\" /W3 /errorReport:prompt  /Taasm.asm
+       Link:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"D:\KIP-2024\KIP-2024\Debug\ASM.exe" /INCREMENTAL /ILK:"Debug\ASM.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\KIP-2024\KIP-2024\Debug\ASM.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\KIP-2024\KIP-2024\Debug\ASM.lib" /MACHINE:X86 Debug\asm.obj
+         ASM.vcxproj -> D:\KIP-2024\KIP-2024\Debug\ASM.exe
+       FinalizeBuildStatus:
+         Файл "Debug\ASM.tlog\unsuccessfulbuild" удаляется.
+         Обращение к "Debug\ASM.tlog\ASM.lastbuildstate".
+     1>Сборка проекта "D:\KIP-2024\KIP-2024\ASM\ASM.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+    Предупреждений: 0
+    Ошибок: 0
+
+Прошло времени 00:00:00.83

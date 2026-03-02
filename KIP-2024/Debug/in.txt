@@ -1,0 +1,22 @@
+int func sum(int a, int b)
+{
+new int c = a + b; 
+ret c;
+}
+
+new int oper = (2 + 3) * 3;
+print oper;
+
+new int pp = oper - 5;
+print pp;
+
+new int g = pp left 1;
+print g;
+new char hh ='e';
+print hh;
+new str j = "fe";
+print j;
+new int k = (3+2) - ((2*5) + (6/2));
+print k;
+new int s = sum(3,6);
+print s;

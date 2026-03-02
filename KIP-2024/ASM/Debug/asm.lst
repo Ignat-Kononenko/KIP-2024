@@ -1,0 +1,137 @@
+Microsoft (R) Macro Assembler Version 14.39.33519.0	    12/18/24 18:28:10
+asm.asm							     Page 1 - 1
+
+
+				.586
+				.model flat, stdcall
+				includelib libucrt.lib
+				includelib kernel32.lib
+				includelib ../Debug/StaticLibrary.lib
+				ExitProcess PROTO :DWORD
+
+				Atom PROTO : DWORD
+				Leng PROTO : DWORD
+				OutputInt PROTO : DWORD
+				OutputStr PROTO : DWORD
+				EXTRN Date: proc
+				EXTRN Time: proc
+
+				.stack 4096
+
+ 00000000			.CONST
+ 00000000 C2 FB F5 EE E4		overflownum BYTE "Выход за пределы значения", 0
+	   20 E7 E0 20 EF
+	   F0 E5 E4 E5 EB
+	   FB 20 E7 ED E0
+	   F7 E5 ED E8 FF
+	   00
+ 0000001A CE F2 F0 E8 F6		negativeValue BYTE "Отрицательное число", 0
+	   E0 F2 E5 EB FC
+	   ED EE E5 20 F7
+	   E8 F1 EB EE 00
+ 0000002E C4 E5 EB E5 ED		zerodel BYTE "Деление на ноль", 0
+	   E8 E5 20 ED E0
+	   20 ED EE EB FC
+	   00
+ 0000003E 00000002			L1 DWORD 2
+ 00000042 00000003			L2 DWORD 3
+
+ 00000000			.data
+ 00000000 00000000			count DWORD 0
+ 00000004 00000000			main_oper DWORD 0
+
+ 00000000			.code
+
+ 00000000			main PROC
+ 00000000  FF 35 0000003E R		push L1
+ 00000006  FF 35 00000042 R		push L2
+ 0000000C  58				pop eax
+ 0000000D  5B				pop ebx
+ 0000000E  03 C3			add eax, ebx
+ 00000010  50				push eax
+ 00000011  FF 35 00000042 R		push L2
+ 00000017  58				pop eax
+ 00000018  5B				pop ebx
+ 00000019  F7 E3			mul ebx
+ 0000001B  50				push eax
+ 0000001C  8F 05 00000004 R		pop main_oper
+ 00000022  FF 35 00000004 R		push main_oper
+ 00000028  E8 00000000 E		call OutputInt
+ 0000002D			OutAsm:
+ 0000002D  6A 00			push 0
+ 0000002F  E8 00000000 E		call ExitProcess
+ 00000034			OVERFLOW:
+ 00000034  68 00000000 R		push offset overflownum
+ 00000039  E8 00000000 E		call OutputStr
+ 0000003E  6A 00			push 0
+ 00000040  E8 00000000 E		call ExitProcess
+ 00000045			NEGNUM:
+ 00000045  68 0000001A R		push offset negativeValue
+ 0000004A  E8 00000000 E		call OutputStr
+ 0000004F  6A 00			push 0
+ 00000051  E8 00000000 E		call ExitProcess
+ 00000056			DELZERO:
+ 00000056  68 0000002E R		push offset zerodel
+ 0000005B  E8 00000000 E		call OutputStr
+ 00000060  6A 00			push 0
+ 00000062  E8 00000000 E		call ExitProcess
+ 00000067			main ENDP
+				end main
+Microsoft (R) Macro Assembler Version 14.39.33519.0	    12/18/24 18:28:10
+asm.asm							     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+CONST  . . . . . . . . . . . . .	32 Bit	 00000046 Para	  Public  'CONST'	 ReadOnly
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000008 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000067 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+Atom . . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Leng . . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+OutputInt  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+OutputStr  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000067 Public STDCALL
+  OutAsm . . . . . . . . . . . .	L Near	 0000002D _TEXT	
+  OVERFLOW . . . . . . . . . . .	L Near	 00000034 _TEXT	
+  NEGNUM . . . . . . . . . . . .	L Near	 00000045 _TEXT	
+  DELZERO  . . . . . . . . . . .	L Near	 00000056 _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+Date . . . . . . . . . . . . . .	L Near	 00000000 FLAT	External STDCALL
+L1 . . . . . . . . . . . . . . .	DWord	 0000003E CONST	
+L2 . . . . . . . . . . . . . . .	DWord	 00000042 CONST	
+Time . . . . . . . . . . . . . .	L Near	 00000000 FLAT	External STDCALL
+count  . . . . . . . . . . . . .	DWord	 00000000 _DATA	
+main_oper  . . . . . . . . . . .	DWord	 00000004 _DATA	
+negativeValue  . . . . . . . . .	Byte	 0000001A CONST	
+overflownum  . . . . . . . . . .	Byte	 00000000 CONST	
+zerodel  . . . . . . . . . . . .	Byte	 0000002E CONST	
+
+	   0 Warnings
+	   0 Errors
